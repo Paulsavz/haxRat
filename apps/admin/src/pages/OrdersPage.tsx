@@ -184,7 +184,7 @@ export default function OrdersPage() {
                 <Td className="font-semibold">{formatCurrency(order.total)}</Td>
                 <Td><StatusBadge status={order.status} /></Td>
                 <Td className="text-slate-400">{formatDate(order.createdAt)}</Td>
-                <Td onClick={(e) => e?.stopPropagation?.()}>
+                <Td onClick={(e) => e.stopPropagation()}>
                   <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
                     <Button size="icon" variant="ghost" onClick={() => setSelectedOrder(order)}>
                       <Eye size={15} />

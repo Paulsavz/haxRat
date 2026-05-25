@@ -45,7 +45,7 @@ export function Td({
 }: {
   children?: React.ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLTableCellElement>) => void;
 }) {
   return (
     <td
