@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
@@ -34,15 +34,6 @@ function PriceSlider({
       <div className="flex items-center justify-between text-sm text-ink-muted">
         <span>GH₵ {value[0]}</span>
         <span>GH₵ {value[1]}</span>
-      </div>
-      <div className="relative h-2 bg-gray-200 rounded-full">
-        <div
-          className="absolute h-full bg-primary-500 rounded-full"
-          style={{
-            left: `${((value[0] - min) / (max - min)) * 100}%`,
-            right: `${100 - ((value[1] - min) / (max - min)) * 100}%`,
-          }}
-        />
       </div>
       <div className="flex gap-3">
         <input
@@ -90,10 +81,15 @@ function FilterSection({ title, children }: { title: string; children: React.Rea
   );
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────────
+// ─── Filter Content ───────────────────────────────────────────────────────────
 
-export function ProductFilters({ categories, filters, onChange, onClear, popularTags = [] }: ProductFiltersProps) {
-  const [mobileOpen, setMobileOpen] = useState(false);
+export function FilterContent({
+  categories,
+  filters,
+  onChange,
+  onClear,
+  popularTags = [],
+}: ProductFiltersProps) {
   const [priceRange, setPriceRange] = useState<[number, number]>([
     filters.minPrice ?? 0,
     filters.maxPrice ?? 1000,
@@ -122,9 +118,7 @@ export function ProductFilters({ categories, filters, onChange, onClear, popular
     onChange({ ...filters, minPrice: priceRange[0], maxPrice: priceRange[1] });
   };
 
-  // ── Sidebar Content ────────────────────────────────────────────────────────
-
-  const filterContent = (
+  return (
     <div className="space-y-4">
       {hasActiveFilters && (
         <button
@@ -200,10 +194,22 @@ export function ProductFilters({ categories, filters, onChange, onClear, popular
       )}
     </div>
   );
+}
+
+// ─── Mobile Filter Button + Sheet ─────────────────────────────────────────────
+
+export function ProductFilters(props: ProductFiltersProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const hasActiveFilters = !!(
+    props.filters.category ||
+    props.filters.minPrice ||
+    props.filters.maxPrice ||
+    (props.filters.tags && props.filters.tags.length > 0)
+  );
 
   return (
     <>
-      {/* Mobile toggle */}
+      {/* Mobile button */}
       <div className="lg:hidden">
         <Button
           variant="secondary"
@@ -211,7 +217,7 @@ export function ProductFilters({ categories, filters, onChange, onClear, popular
           leftIcon={<SlidersHorizontal size={14} />}
           onClick={() => setMobileOpen(true)}
         >
-          Filters{hasActiveFilters && ' •'}
+          Filters{hasActiveFilters ? ' •' : ''}
         </Button>
 
         {/* Mobile bottom sheet */}
@@ -228,7 +234,7 @@ export function ProductFilters({ categories, filters, onChange, onClear, popular
                   <X size={20} />
                 </button>
               </div>
-              {filterContent}
+              <FilterContent {...props} />
               <Button
                 fullWidth
                 className="mt-4"
@@ -239,14 +245,6 @@ export function ProductFilters({ categories, filters, onChange, onClear, popular
             </div>
           </div>
         )}
-      </div>
-
-      {/* Desktop sidebar */}
-      <div className="hidden lg:block w-56 flex-shrink-0">
-        <div className="bg-white rounded-2xl shadow-soft p-4 sticky top-24">
-          <h2 className="text-base font-semibold text-ink mb-4">Filters</h2>
-          {filterContent}
-        </div>
       </div>
     </>
   );

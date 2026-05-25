@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Search, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
 import { ProductGrid } from '../../components/products/ProductGrid';
-import { ProductFilters } from '../../components/products/ProductFilters';
+import { ProductFilters, FilterContent } from '../../components/products/ProductFilters';
 import { Button } from '../../components/ui/Button';
 import { productsApi, categoriesApi } from '../../lib/api';
 import type { Product, Category, ProductFilters as Filters } from '../../types';
@@ -220,7 +220,7 @@ export default function ProductsPage() {
         <div className="hidden lg:block w-56 flex-shrink-0">
           <div className="bg-white rounded-2xl shadow-soft p-4 sticky top-24">
             <h2 className="text-base font-semibold text-ink mb-4">Filters</h2>
-            <ProductFilters
+            <FilterContent
               categories={categories}
               filters={filters}
               onChange={handleFilterChange}
