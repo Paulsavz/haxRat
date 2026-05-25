@@ -16,8 +16,6 @@ import { ordersAPI } from '@/lib/api';
 import { useAdminStore } from '@/store/adminStore';
 import OrderCard from '@/components/OrderCard';
 import { formatCurrency, ORDER_STATUSES, STATUS_COLORS } from '@/components/utils';
-import toast from 'react-hot-toast';
-
 interface OrderItem {
   name: string;
   qty: number;

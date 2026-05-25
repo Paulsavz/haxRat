@@ -29,15 +29,22 @@ export default function Badge({ children, variant = 'default', className }: Badg
 
 export function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { label: string; variant: BadgeProps['variant'] }> = {
+    // Order statuses
     placed: { label: 'Placed', variant: 'info' },
     confirmed: { label: 'Confirmed', variant: 'purple' },
     processing: { label: 'Processing', variant: 'warning' },
     shipped: { label: 'Shipped', variant: 'default' },
     delivered: { label: 'Delivered', variant: 'success' },
     cancelled: { label: 'Cancelled', variant: 'danger' },
+    // Staff statuses
     active: { label: 'Active', variant: 'success' },
     inactive: { label: 'Inactive', variant: 'danger' },
+    // Delivery statuses
+    pending: { label: 'Pending', variant: 'warning' },
+    assigned: { label: 'Assigned', variant: 'info' },
+    picked_up: { label: 'Picked Up', variant: 'purple' },
+    in_transit: { label: 'In Transit', variant: 'default' },
   };
-  const config = map[status] || { label: status, variant: 'default' as const };
+  const config = map[status] || { label: status.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()), variant: 'default' as const };
   return <Badge variant={config.variant}>{config.label}</Badge>;
 }
