@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "YOUR_FIREBASE_PROJECT_ID"
+    "default": "savz-s-mart"
   },
   "targets": {
-    "YOUR_FIREBASE_PROJECT_ID": {
+    "savz-s-mart": {
       "hosting": {
-        "storefront": ["YOUR_STOREFRONT_SITE_ID"],
-        "admin": ["YOUR_ADMIN_SITE_ID"]
+        "storefront": ["savz-s-mart"],
+        "admin": ["savz-s-mart-admin"]
       }
     }
   }
