@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────── */
+:root {
+  /* Brand */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: #dbeafe;
+
+  /* Surface */
+  --color-surface: #ffffff;
+  --color-surface-raised: #f8fafc;
+  --color-surface-overlay: #f1f5f9;
+
+  /* Ink */
+  --color-ink: #0f172a;
+  --color-ink-secondary: #475569;
+  --color-ink-muted: #94a3b8;
+
+  /* Border */
+  --color-border: #e2e8f0;
+  --color-border-focus: #2563eb;
+
+  /* Feedback */
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-float: 0 20px 40px rgb(0 0 0 / 0.15);
+}
+
+/* ─── Base Styles ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-surface-raised);
+  color: var(--color-ink);
+  line-height: 1.6;
+}
+
+/* ─── Focus styles ───────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-overlay);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-muted);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-secondary);
+}
+
+/* ─── Stream Chat CSS overrides ──────────────────────────── */
+.str-chat {
+  --str-chat__primary-color: var(--color-primary) !important;
+  --str-chat__active-primary-color: var(--color-primary-hover) !important;
+  --str-chat__surface-color: var(--color-surface) !important;
+  --str-chat__secondary-surface-color: var(--color-surface-raised) !important;
+  --str-chat__tertiary-surface-color: var(--color-surface-overlay) !important;
+  --str-chat__primary-surface-color: var(--color-primary-light) !important;
+  --str-chat__primary-surface-color-low-emphasis: #eff6ff !important;
+  --str-chat__border-radius-circle: 9999px !important;
+  --str-chat__message-bubble-color: var(--color-ink) !important;
+  --str-chat__own-message-bubble-background-color: var(--color-primary) !important;
+  --str-chat__own-message-bubble-color: #ffffff !important;
+  border-radius: var(--radius-xl) !important;
+  height: 100% !important;
+  font-family: var(--font-inter), system-ui, sans-serif !important;
+}
+
+.str-chat__channel {
+  height: 100%;
+}
+
+.str-chat__message-list {
+  padding: 12px !important;
+}
+
+.str-chat__message-input {
+  border-top: 1px solid var(--color-border) !important;
+  padding: 10px 12px !important;
+}
+
+.str-chat__send-button {
+  background-color: var(--color-primary) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+.str-chat__avatar {
+  background-color: var(--color-primary) !important;
+}
+
+/* ─── Stream Video CSS overrides ─────────────────────────── */
+.str-video {
+  --str-video__primary: var(--color-primary) !important;
+  font-family: var(--font-inter), system-ui, sans-serif !important;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+/* ─── Utility Classes ────────────────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-surface-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-800 shadow-card transition-all hover:bg-surface-50 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-ink-600 transition-all hover:bg-surface-100 active:scale-95;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white shadow-card border border-surface-200/60;
+  }
+
+  .input-base {
+    @apply w-full rounded-xl border border-surface-200 bg-white px-4 py-2.5 text-sm text-ink-900 placeholder-ink-400 shadow-sm transition-all focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-100;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-ink-900 tracking-tight;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-xl bg-surface-200;
+  }
+}
+
+/* ─── Page-level transitions ─────────────────────────────── */
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.4s ease-out both;
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+}

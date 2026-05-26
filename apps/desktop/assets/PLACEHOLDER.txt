@@ -1,0 +1,13 @@
+Place your app icons here before building:
+
+  icon.png   — 512×512 PNG  (used by Linux AppImage & as fallback)
+  icon.ico   — Windows multi-size ICO  (used by NSIS installer)
+  icon.icns  — macOS ICNS bundle       (used by DMG)
+
+You can generate icon.ico and icon.icns from icon.png using tools such as:
+  • https://convertio.co/png-ico/
+  • https://www.img2icnsapp.com/  (macOS)
+  • electron-icon-builder  (npm package)
+
+Until real icons are added the app will still run but the taskbar/tray
+icon will appear blank on some platforms.
