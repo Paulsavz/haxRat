@@ -7,7 +7,7 @@ import { StreamVideo } from '@stream-io/video-react-native-sdk'
 import { OverlayProvider } from 'stream-chat-expo'
 import { useAdminStore } from '../store/adminStore'
 import { connectChatUser, createStreamVideoClient } from '../lib/stream'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 export default function RootLayout() {
   const {

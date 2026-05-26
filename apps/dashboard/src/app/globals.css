@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Stream Chat CSS */
+@import 'stream-chat-react/dist/css/v2/index.css';
+
+/* ====================================================
+   Base resets & global styles
+   ==================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f8fafc;
+  color: #111827;
+}
+
+/* ====================================================
+   Stream Chat Dark Sidebar Overrides
+   ==================================================== */
+
+/* Overall channel list in sidebar context */
+.str-chat__channel-list {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.str-chat__channel-list-messenger {
+  background: transparent !important;
+}
+
+.str-chat {
+  --str-chat__font-family: 'Inter', system-ui, sans-serif;
+  --str-chat__border-radius-lg: 12px;
+  --str-chat__border-radius-md: 8px;
+  --str-chat__border-radius-sm: 6px;
+  --str-chat__primary-color: #4f46e5;
+  --str-chat__active-primary-color: #4338ca;
+  --str-chat__surface-color: #ffffff;
+  --str-chat__secondary-surface-color: #f8fafc;
+  --str-chat__primary-surface-color: #eef2ff;
+  --str-chat__primary-surface-color-low-emphasis: #f0f4ff;
+  --str-chat__message-textarea-border-block-end: 1px solid #e5e7eb;
+}
+
+/* Channel preview items */
+.str-chat__channel-preview-messenger {
+  border-radius: 10px;
+  margin: 2px 8px;
+  padding: 10px 12px !important;
+  border: none !important;
+  background: transparent !important;
+  transition: background 0.15s ease;
+}
+
+.str-chat__channel-preview-messenger:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.str-chat__channel-preview-messenger--active {
+  background: rgba(79, 70, 229, 0.15) !important;
+  border-left: 3px solid #6366f1 !important;
+}
+
+.str-chat__channel-preview-messenger--unread {
+  background: rgba(79, 70, 229, 0.08) !important;
+}
+
+/* Channel preview text */
+.str-chat__channel-preview-messenger__name {
+  color: #f1f5f9 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.str-chat__channel-preview-messenger__last-message {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+}
+
+.str-chat__channel-preview-unread-count {
+  background: #4f46e5 !important;
+  color: white !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+}
+
+/* Message list area */
+.str-chat__main-panel {
+  background: #ffffff;
+}
+
+.str-chat__message-list {
+  background: #f8fafc !important;
+  padding: 16px !important;
+}
+
+/* Message bubbles */
+.str-chat__message--me .str-chat__message-bubble {
+  background: #4f46e5 !important;
+  color: white !important;
+  border-radius: 18px 18px 4px 18px !important;
+}
+
+.str-chat__message--other .str-chat__message-bubble {
+  background: white !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 18px 18px 18px 4px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+/* Message input area */
+.str-chat__message-input {
+  background: white !important;
+  border-top: 1px solid #e5e7eb !important;
+  padding: 12px 16px !important;
+}
+
+.str-chat__textarea textarea {
+  background: #f8fafc !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  color: #111827 !important;
+  transition: border-color 0.15s ease !important;
+}
+
+.str-chat__textarea textarea:focus {
+  border-color: #4f46e5 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+}
+
+/* Channel header */
+.str-chat__header-livestream {
+  background: white !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 12px 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+}
+
+/* Send button */
+.str-chat__send-button {
+  background: #4f46e5 !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+}
+
+.str-chat__send-button:hover {
+  background: #4338ca !important;
+}
+
+/* Search */
+.str-chat__channel-search-input {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  color: white !important;
+  font-size: 13px !important;
+}
+
+.str-chat__channel-search-input::placeholder {
+  color: #64748b !important;
+}
+
+/* Thread */
+.str-chat__thread {
+  background: white !important;
+  border-left: 1px solid #e5e7eb !important;
+}
+
+/* Attachment previews */
+.str-chat__message-attachment-card {
+  border-radius: 10px !important;
+  border: 1px solid #e5e7eb !important;
+  overflow: hidden !important;
+}
+
+/* Emoji picker */
+.str-chat__emoji-picker {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+}
+
+/* Reactions */
+.str-chat__message-reaction {
+  border-radius: 20px !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* ====================================================
+   Stream Video SDK Overrides
+   ==================================================== */
+.str-video__call {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.str-video__participant-view {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ====================================================
+   Custom utility classes
+   ==================================================== */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 2px;
+  }
+
+  .scrollbar-content {
+    scrollbar-width: thin;
+    scrollbar-color: #e2e8f0 transparent;
+  }
+
+  .scrollbar-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-content::-webkit-scrollbar-thumb {
+    background-color: #e2e8f0;
+    border-radius: 3px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ====================================================
+   Page transitions
+   ==================================================== */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 0.2s ease-out;
+}
+
+/* ====================================================
+   Custom status timeline
+   ==================================================== */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  bottom: -8px;
+  width: 2px;
+  background: linear-gradient(to bottom, #e2e8f0, transparent);
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
