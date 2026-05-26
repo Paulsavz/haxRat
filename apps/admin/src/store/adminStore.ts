@@ -52,7 +52,7 @@ interface AdminStore {
   setPendingOrdersCount: (count: number) => void;
 }
 
-const SOCKET_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:3000';
+const SOCKET_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
 
 export const useAdminStore = create<AdminStore>()(
   persist(
