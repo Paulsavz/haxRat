@@ -1,0 +1,20 @@
+{
+  "name": "@retailhub/api",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "build": "echo 'no build step'"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "@stream-io/node-sdk": "^0.4.0",
+    "@supabase/supabase-js": "^2.43.0",
+    "firebase-admin": "^12.1.0",
+    "hono": "^4.3.0",
+    "stream-chat": "^8.40.0",
+    "dotenv": "^16.4.5",
+    "axios": "^1.7.2"
+  }
+}

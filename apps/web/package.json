@@ -1,0 +1,35 @@
+{
+  "name": "@retailhub/web",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stream-io/video-react-sdk": "^1.4.0",
+    "@supabase/ssr": "^0.3.0",
+    "@supabase/supabase-js": "^2.43.0",
+    "next": "15.1.8",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "stream-chat": "^8.40.0",
+    "stream-chat-react": "^12.3.0",
+    "zustand": "^4.5.0",
+    "lucide-react": "^0.400.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.3.0",
+    "react-hot-toast": "^2.4.1",
+    "framer-motion": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.4.5"
+  }
+}
