@@ -7,6 +7,19 @@ const config: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        'utf-8-validate': false,
+        bufferutil: false,
+        net: false,
+        tls: false,
+        fs: false,
+      }
+    }
+    return config
+  },
 }
 
 export default config

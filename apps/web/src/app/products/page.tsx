@@ -1,6 +1,7 @@
 'use client'
+export const dynamic = 'force-dynamic'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { Suspense, useState, useEffect, useCallback, useRef } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -26,6 +27,14 @@ const PRICE_RANGES = [
 ]
 
 export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-primary-600 border-t-transparent" /></div>}>
+      <ProductsPageInner />
+    </Suspense>
+  )
+}
+
+function ProductsPageInner() {
   const searchParams = useSearchParams()
   const router = useRouter()
 

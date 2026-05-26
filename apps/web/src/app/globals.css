@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Stream SDK styles */
+@import 'stream-chat-react/dist/css/v2/index.css';
+@import '@stream-io/video-react-sdk/dist/css/styles.css';
+
 /* ─── CSS Custom Properties ─────────────────────────────── */
 :root {
   /* Brand */

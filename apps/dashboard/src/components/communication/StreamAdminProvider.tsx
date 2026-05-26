@@ -92,17 +92,17 @@ export default function StreamAdminProvider({ children }: { children: React.Reac
 
         // Listen for total unread count updates
         chatClient.on('notification.mark_read', () => {
-          setUnreadChatCount(chatClient.user?.total_unread_count ?? 0)
+          setUnreadChatCount(Number(chatClient.user?.total_unread_count ?? 0))
         })
         chatClient.on('message.new', () => {
-          setUnreadChatCount(chatClient.user?.total_unread_count ?? 0)
+          setUnreadChatCount(Number(chatClient.user?.total_unread_count ?? 0))
         })
         chatClient.on('notification.message_new', () => {
-          setUnreadChatCount(chatClient.user?.total_unread_count ?? 0)
+          setUnreadChatCount(Number(chatClient.user?.total_unread_count ?? 0))
         })
 
         // Set initial unread count
-        setUnreadChatCount(chatClient.user?.total_unread_count ?? 0)
+        setUnreadChatCount(Number(chatClient.user?.total_unread_count ?? 0))
 
         // Initialize Stream Video
         const videoClient = new StreamVideoClient({
@@ -128,8 +128,10 @@ export default function StreamAdminProvider({ children }: { children: React.Reac
           const callType: 'audio' | 'video' = isVideo ? 'video' : 'audio'
 
           // Get caller info from members
-          const callerMember = call.state?.members
-            ? Object.values(call.state.members).find(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const callAny = call as any
+          const callerMember = callAny.state?.members
+            ? Object.values(callAny.state.members).find(
                 (m: any) => m.user_id !== tokenData.userId
               )
             : null
@@ -141,7 +143,7 @@ export default function StreamAdminProvider({ children }: { children: React.Reac
           const callerAvatar = (callerMember as any)?.user?.image
 
           setIncomingCall({
-            call,
+            call: call as any,
             callerName,
             callerAvatar,
             callType,

@@ -487,15 +487,10 @@ export default function ChatCallWidget() {
   const [chatCssLoaded, setChatCssLoaded] = useState(false)
   const widgetRef = useRef<HTMLDivElement>(null)
 
-  // Load Stream CSS dynamically (client-only, avoids SSR issues)
+  // CSS loaded via globals.css @import — no dynamic import needed
   useEffect(() => {
-    if (!chatCssLoaded) {
-      // Dynamically import CSS so it doesn't break SSR
-      import('stream-chat-react/dist/css/v2/index.css').catch(() => {})
-      import('@stream-io/video-react-sdk/dist/css/styles.css').catch(() => {})
-      setChatCssLoaded(true)
-    }
-  }, [chatCssLoaded])
+    setChatCssLoaded(true)
+  }, [])
 
   // Restore guest session from localStorage on mount
   useEffect(() => {
