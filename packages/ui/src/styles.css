@@ -1,0 +1,73 @@
+/**
+ * Design-system CSS variables. Import once at your app root:
+ *
+ *   import '@retail/ui/styles.css';
+ *
+ * Light theme is the default; add `class="dark"` to <html> for dark mode.
+ * Override any variable in your own app to re-brand the whole system.
+ */
+
+:root {
+  --ui-background: 210 40% 98%;
+  --ui-foreground: 222 47% 11%;
+
+  --ui-surface: 0 0% 100%;
+  --ui-surface-subtle: 210 40% 98%;
+  --ui-surface-muted: 210 40% 96%;
+
+  --ui-muted: 210 40% 96%;
+  --ui-muted-foreground: 215 16% 47%;
+
+  --ui-border: 214 32% 91%;
+  --ui-input: 214 32% 91%;
+  --ui-ring: 239 84% 67%;
+
+  --ui-brand: 239 84% 67%;
+  --ui-brand-foreground: 0 0% 100%;
+
+  --ui-success: 142 71% 45%;
+  --ui-success-foreground: 0 0% 100%;
+  --ui-warning: 38 92% 50%;
+  --ui-warning-foreground: 0 0% 100%;
+  --ui-danger: 0 84% 60%;
+  --ui-danger-foreground: 0 0% 100%;
+
+  --ui-radius: 0.625rem;
+}
+
+.dark {
+  --ui-background: 222 47% 7%;
+  --ui-foreground: 210 40% 98%;
+
+  --ui-surface: 222 47% 11%;
+  --ui-surface-subtle: 222 47% 9%;
+  --ui-surface-muted: 217 33% 17%;
+
+  --ui-muted: 217 33% 17%;
+  --ui-muted-foreground: 215 20% 65%;
+
+  --ui-border: 217 33% 20%;
+  --ui-input: 217 33% 20%;
+  --ui-ring: 239 84% 67%;
+
+  --ui-brand: 239 84% 67%;
+  --ui-brand-foreground: 0 0% 100%;
+
+  --ui-success: 142 71% 45%;
+  --ui-success-foreground: 0 0% 100%;
+  --ui-warning: 38 92% 50%;
+  --ui-warning-foreground: 222 47% 11%;
+  --ui-danger: 0 84% 60%;
+  --ui-danger-foreground: 0 0% 100%;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
